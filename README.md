@@ -3,7 +3,7 @@
 This repository contains my Data Structures & Algorithms practice.
 
 ## Topics
-
+- Basic Problems
 - Arrays
 - Sliding Window
 - Prefix/Suffix
