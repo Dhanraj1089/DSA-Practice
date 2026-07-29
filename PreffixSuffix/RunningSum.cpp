@@ -20,7 +20,7 @@ int main()
 //Prefix formula Initializing 
 
     prefix[0] = array[0];
-    for (int i=0;i<n;i++)
+    for (int i=1;i<n;i++)
     {
       prefix[i] = prefix[i-1]+array[i];
       
@@ -29,6 +29,6 @@ int main()
     //print prefix of i 
     for (int i=0;i<n;i++)
     {
-        cout<<prefix[i]<<" ";
+        cout<<prefix[i]<<"\n ";
     }
 }
