@@ -26,4 +26,43 @@ int main()
         cout<<"\n"<<prefix_product[i];
     }
     
+    vector<int> suffix_product(n);
+    suffix_product[n-1] = array[n-1];
+    for(int i=n-2;i>=0;i--)
+    {
+        suffix_product[i]=suffix_product[i+1]*array[i];
+    }
+
+    cout<<"Suffix Product\n";
+    for(int i=0;i<n;i++)
+    {
+        cout<<"\n"<<suffix_product[i];
+    }
+
+    vector<int> arrayEx(n);
+    for(int i=0;i<n;i++)
+    {
+       // arrayEx[i]=prefix_product[i]*suffix_product[i];
+       int left, right;
+       if(i==0)
+       left = 1;
+       else 
+       left = prefix_product[i-1];
+
+       if(i==n-1)
+       right = 1;
+       else 
+       right = suffix_product[i+1];
+
+       arrayEx[i]=right*left;
+
+    }
+
+    cout<<"Array Product Except Self";
+    for(int i=0;i<n;i++)
+    {
+        cout<<"\n"<<arrayEx[i];
+    }
+
+
 }
