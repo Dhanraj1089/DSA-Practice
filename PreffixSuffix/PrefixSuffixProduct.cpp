@@ -54,7 +54,8 @@ int main()
        else 
        right = suffix_product[i+1];
 
-       arrayEx[i]=right*left;
+       arrayEx[i]=right*left;  //this is the formula
+//changing this line
 
     }
 
