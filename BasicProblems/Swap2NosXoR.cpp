@@ -18,6 +18,26 @@ The important rules are:
 These properties make XOR swapping possible.
 
 
+(a Xor b) Xor b = a
+
+
+The two occurrences of b cancel each other out.
+
+The mathematical logic behind it
+Let's use the original values A and B.
+Operation	Result
+a = a ^ b	a = A ^ B
+b = a ^ b	b = A ^ B ^ B = A
+a = a ^ b	a = A ^ B ^ A = B
+
+Therefore:
+- a becomes the original B.
+- b becomes the original A.
+5. Interview knowledge: Why does XOR work?
+The key concept is:
+
+(a Xor b) Xor b = a
+
 
 */
 
