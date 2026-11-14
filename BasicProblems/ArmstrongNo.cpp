@@ -1,22 +1,62 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
-int main()
+
+bool isArmstrong(long long number)
 {
-    int num;
-    int digit =0;
-    int cubeSum = 0;
-    cout<<"Enter a Number";
-    cin>>num;
-    int num1=num;
-    while(num!=0)
+    if (number < 0)
     {
-        digit = num%10;
-        cubeSum = cubeSum + (digit*digit*digit);
-        num = num /10;
+        return false;
     }
 
-    if(num1==cubeSum)
-    cout<<"Bingo! Armstrong Number";
+    long long digitCount = 0;
+    long long remaining = number;
+    do
+    {
+        ++digitCount;
+        remaining /= 10;
+    }
+    while (remaining != 0);
+
+    long long sum = 0;
+    remaining = number;
+    do
+    {
+        const int digit = static_cast<int>(remaining % 10);
+        long long power = 1;
+
+        for (long long i = 0; i < digitCount; ++i)
+        {
+            if (digit != 0 && power > number / digit)
+            {
+                return false;
+            }
+            power *= digit;
+        }
+
+        if (power > number - sum)
+        {
+            return false;
+        }
+        sum += power;
+        remaining /= 10;
+    }
+    while (remaining != 0);
+
+    return sum == number;
+}
+
+int main()
+{
+    long long number;
+    cout << "Enter a number: ";
+    cin >> number;
+
+    if (isArmstrong(number))
+    {
+        cout << "Armstrong number";
+    }
     else
-    cout<<"NOT an Armstrong number";
+    {
+        cout << "Not an Armstrong number";
+    }
 }
