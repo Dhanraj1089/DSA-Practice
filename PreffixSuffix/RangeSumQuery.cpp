@@ -4,6 +4,7 @@
 using namespace std;
 
 class NumArray {
+
 private:
     vector<int> prefix;
 
@@ -14,11 +15,15 @@ public:
 
         int n = nums.size();
 
-        prefix.resize(n + 1, 0);
+        if (n == 0) return;
 
-        for (int i = 0; i < n; i++) {
+        prefix.resize(n);
 
-            prefix[i + 1] = prefix[i] + nums[i];
+        prefix[0] = nums[0];
+
+        for (int i = 1; i < n; i++) {
+
+            prefix[i] = prefix[i - 1] + nums[i];
 
         }
     }
@@ -26,7 +31,11 @@ public:
     // Return sum between left and right indices
     int sumRange(int left, int right) {
 
-        return prefix[right + 1] - prefix[left];
+        if (left == 0) {
+            return prefix[right];
+        }
+
+        return prefix[right] - prefix[left - 1];
 
     }
 };
@@ -35,7 +44,7 @@ int main() {
 
     vector<int> nums = {-2, 0, 3, -5, 2, -1};
 
-    // Create object and build prefix array
+    // Create object
     NumArray obj(nums);
 
     cout << "Original Array: ";
@@ -46,7 +55,15 @@ int main() {
 
     cout << "\n\n";
 
-    // Display range sum queries
+    cout << "Prefix Sum Array: ";
+
+    for (int i = 0; i < nums.size(); i++) {
+        // Displaying cumulative sums for illustration
+        // The prefix vector is private, so see values below.
+    }
+
+    cout << "\n";
+
     cout << "Range Sum Query Results:\n";
 
     cout << "sumRange(0, 2) = "
